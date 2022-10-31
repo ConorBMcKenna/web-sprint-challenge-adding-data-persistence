@@ -4,8 +4,6 @@ const db = require("../../data/dbConfig.js");
 module.exports = {
   get,
   insert,
-  update,
-  remove,
 };
 
 function get(id) {
@@ -34,13 +32,4 @@ function insert(project) {
 
 }
 
-function update(id, changes) {
-  return db("projects")
-    .where("id", id)
-    .update(changes)
-    .then((count) => (count > 0 ? get(id) : null));
-}
 
-function remove(id) {
-  return db("projects").where("id", id).del();
-}
